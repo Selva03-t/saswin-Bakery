@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-import productReducer from "./ProductReducer";
-import { productInitialState } from "./ProductReducer";
+import productReducer from "./productReducer";
+import { productInitialState } from "./productReducer";
 
 import blackForest from "../assets/products/black-forestcake.jpg";
 import blueberryCheese from "../assets/products/blueberry-cheesecake.jpg";
