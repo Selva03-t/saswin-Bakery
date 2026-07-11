@@ -3,6 +3,7 @@ import { useCart } from "../context/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
+import { apiUrl } from "../utils/api";
 
 function Cart() {
   const { cart, cartTotalItems, cartTotalPrice, dispatch } = useCart();
@@ -21,7 +22,7 @@ function Cart() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/orders",
+        apiUrl("/api/orders"),
         {
           items: cart.items.map((item) => ({
             productId: item._id || item.id,

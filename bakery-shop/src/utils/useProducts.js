@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { apiUrl } from "./api";
 
 export function useProducts() {
   const [products, setProducts] = useState([]);
@@ -7,7 +8,7 @@ export function useProducts() {
   useEffect(() => {
     async function loadProducts() {
       try {
-        const res = await fetch("http://localhost:5000/api/products");
+        const res = await fetch(apiUrl("/api/products"));
         const data = await res.json();
         setProducts(data);
       } catch (err) {

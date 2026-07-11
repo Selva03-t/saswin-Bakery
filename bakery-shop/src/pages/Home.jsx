@@ -3,6 +3,7 @@ import { motion as Motion } from "framer-motion";
 import { ArrowRight, Star, Cake, Gift, Heart } from "lucide-react";
 import CustomizeCakePopup from "../components/CustomizeCakePopup";
 import { featuredProducts, normalizeProduct } from "../utils/productData";
+import { apiUrl } from "../utils/api";
 
 function Home() {
   const [showCustomize, setShowCustomize] = useState(false);
@@ -12,7 +13,7 @@ function Home() {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 1200);
 
-    fetch("http://localhost:5000/api/products/featured", {
+    fetch(apiUrl("/api/products/featured"), {
       signal: controller.signal,
     })
       .then((res) => res.json())

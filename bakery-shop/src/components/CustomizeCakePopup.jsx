@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import { useToast } from "../context/ToastContext";
+import { apiUrl } from "../utils/api";
 
 function CustomizeCakePopup({ onClose }) {
   const { user } = useAuth();
@@ -34,7 +35,7 @@ function CustomizeCakePopup({ onClose }) {
     setSubmitting(true);
     try {
       await axios.post(
-        "http://localhost:5000/api/orders",
+        apiUrl("/api/orders"),
         {
           orderType: "customCake",
           customCake: form,

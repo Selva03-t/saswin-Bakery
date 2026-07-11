@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { apiUrl } from "../utils/api";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
@@ -17,7 +18,7 @@ function Orders() {
     const fetchOrders = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/orders/${encodeURIComponent(user.email)}`,
+          apiUrl(`/api/orders/${encodeURIComponent(user.email)}`),
           { withCredentials: true }
         );
 

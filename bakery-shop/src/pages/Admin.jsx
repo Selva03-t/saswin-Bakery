@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useProducts } from "../context/ProductContext";
+import { apiUrl } from "../utils/api";
 
 function Admin() {
   const { products, addProduct, updateProduct, deleteProduct } = useProducts();
@@ -17,7 +18,7 @@ function Admin() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/orders", {
+        const res = await axios.get(apiUrl("/api/orders"), {
           withCredentials: true,
         });
         setOrders(res.data);

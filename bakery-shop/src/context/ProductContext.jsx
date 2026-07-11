@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 import productReducer, { productInitialState } from "./productReducer";
 import { normalizeProduct } from "../utils/productData";
+import { apiUrl } from "../utils/api";
 
 const ProductContext = createContext();
 
@@ -15,7 +16,7 @@ export const ProductProvider = ({ children }) => {
       try {
         dispatch({ type: "SET_REFRESHING", payload: true });
 
-        const res = await fetch("http://localhost:5000/api/products", {
+        const res = await fetch(apiUrl("/api/products"), {
           signal: controller.signal,
         });
         const data = await res.json();
